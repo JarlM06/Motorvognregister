@@ -41,5 +41,78 @@
     <br><br>
     <label for="registrer"></label>
     <button id="registrer">Registrer</button>
+
+    <br><br>
+    <label for="utMotorvogner">Alle motorvogner: </label>
+    <div id="utMotorvogner"></div><br>
+
+    <button id="slett">Slett alle motorvogner</button>
+
+    <script type="application/javascript">
+        // Lager et objekt, "motorvogn", med alle attributtene gitt
+        $("#registrer").click(function() {
+            const motorvogn = {
+                personnummer: $("#personnummer").val(),
+                navn: $("#navn").val(),
+                adresse: $("#adresse").val(),
+                kjennetegn: $("#kjennetegn").val(),
+                bilmerke: $("#bilmerke").val(),
+                biltype: $("#biltype").val()
+            };
+
+            // Sender en postmapping for å lagre "motorvogn" objektet
+            $.post("/lagre", motorvogn, function() {
+                hentAlle();
+            });
+
+            // Setter alle inputfeltene tomt
+            $("#personnummer").val("");
+            $("#navn").val("");
+            $("#adresse").val("");
+            $("#kjennetegn").val("");
+            $("#bilmerke").val("");
+            $("#biltype").val("");
+        })
+
+        // Sender en getmapping som henter alle motorvognene i registeret
+        function hentAlle() {
+            $.get("/hentAlle", function(data) {
+                formaterData(data);
+            })
+        }
+
+        // Lager en tabell som inneholder alle verdiene i motorvognregisteret
+        function formaterData(motorvogner) {
+            let ut = "<table> <tr>" +
+                "<th>Personnummer</th>" +
+                "<th>Navn</th>" +
+                "<th>Adresse</th>" +
+                "<th>Kjennetegn</th>" +
+                "<th>Bilmerke</th>" +
+                "<th>Biltype</th>" +
+                "</tr>";
+
+            for (const motorvogn of motorvogner) {
+                ut += `<tr>
+                       <td>${motorvogn.personnummer}</td>
+                       <td>${motorvogn.navn}</td>
+                       <td>${motorvogn.adresse}</td>
+                       <td>${motorvogn.kjennetegn}</td>
+                       <td>${motorvogn.bilmerke}</td>
+                       <td>${motorvogn.biltype}</td>
+                       </tr>`;
+            }
+
+            ut += "</table>";
+            $("#utMotorvogner").html(ut);
+        }
+
+        // Sender en postmapping for å slette alt i registeret
+        $("#slett").click(function() {
+            $.post("/slett", function() {
+                hentAlle();
+            });
+        })
+    </script>
 </body>
 </html>
