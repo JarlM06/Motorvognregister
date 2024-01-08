@@ -7,46 +7,60 @@
     <title>Motorvognregister</title>
 </head>
 <body>
-    <div class="egenskapDiv">
-        <label for="personnummer">Personnummer</label>
-        <br>
-        <input type="text" id="personnummer">
-    </div>
-    <div class="egenskapDiv">
-        <label for="navn">Navn</label>
-        <br>
-        <input type="text" id="navn">
-    </div>
-    <div class="egenskapDiv">
-        <label for="adresse">Adresse</label>
-        <br>
-        <input type="text" id="adresse">
-    </div>
-    <div class="egenskapDiv">
-        <label for="kjennetegn">Kjennetegn</label>
-        <br>
-        <input type="text" id="kjennetegn">
-    </div>
-    <div class="egenskapDiv">
-        <label for="bilmerke">Bilmerke</label>
-        <br>
-        <input type="text" id="bilmerke">
-    </div>
-    <div class="egenskapDiv">
-        <label for="biltype">Biltype</label>
-        <br>
-        <input type="text" id="biltype">
-    </div>
+    <div id="mainDiv">
+        <div id="tittelDiv">
+            <h1 id="tittel">Motorvognregister</h1>
+        </div>
 
-    <br><br>
-    <label for="registrer"></label>
-    <button id="registrer">Registrer</button>
+        <div class="egenskaper">
+            <div class="egenskapDiv">
+                <label for="personnummer">Personnummer</label>
+                <br>
+                <input type="text" id="personnummer">
+            </div>
+            <div class="egenskapDiv">
+                <label for="navn">Navn</label>
+                <br>
+                <input type="text" id="navn">
+            </div>
+            <div class="egenskapDiv">
+                <label for="adresse">Adresse</label>
+                <br>
+                <input type="text" id="adresse">
+            </div>
+        </div>
 
-    <br><br>
-    <label for="utMotorvogner">Alle motorvogner: </label>
-    <div id="utMotorvogner"></div><br>
+        <div class="egenskaper">
+            <div class="egenskapDiv">
+                <label for="kjennetegn">Kjennetegn</label>
+                <br>
+                <input type="text" id="kjennetegn">
+            </div>
+            <div class="egenskapDiv">
+                <label for="bilmerke">Bilmerke</label>
+                <br>
+                <input type="text" id="bilmerke">
+            </div>
+            <div class="egenskapDiv">
+                <label for="biltype">Biltype</label>
+                <br>
+                <input type="text" id="biltype">
+            </div>
+        </div>
 
-    <button id="slett">Slett alle motorvogner</button>
+        <br><br>
+
+
+        <div id="knapper">
+            <button class="knapp" id="registrer">Registrer</button>
+            <button class="knapp" id="slett">Slett alle motorvogner</button>
+        </div>
+
+        <div id="utDiv">
+            <label for="utMotorvogner">Motorvogner:</label><br>
+            <div id="utMotorvogner"></div>
+        </div>
+    </div>
 
     <script type="application/javascript">
         // Lager et objekt, "motorvogn", med alle attributtene gitt

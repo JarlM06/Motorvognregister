@@ -1,0 +1,38 @@
+#mainDiv {
+    margin: auto;
+    margin-top: 30px;
+    width: 70%;
+    background-color: #e5e5e5;
+    padding: 10px;
+}
+
+#tittelDiv {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.egenskaper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-evenly;
+    max-width: 100%;
+}
+
+#knapper {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    width: 25%;
+    margin: auto;
+}
+
+.knapp {
+    margin-bottom: 10px;
+}
+
+#utDiv {
+    display: flex;
+    justify-content: space-evenly;
+    flex-direction: column;
+    align-items: center;
+}
