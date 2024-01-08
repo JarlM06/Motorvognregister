@@ -2,7 +2,7 @@ package com.example.motorvognregister;
 
 public class Motorvogn {
     // Angir alle attributtene en motorvogn skal ha
-    private Integer personnummer;
+    private String personnummer;
     private String navn;
     private String adresse;
     private String kjennetegn;
@@ -10,7 +10,7 @@ public class Motorvogn {
     private String biltype;
 
     // Konstruktøren som setter alle attributtene til de riktige veridene
-    public Motorvogn(Integer personnummer, String navn, String adresse, String kjennetegn, String bilmerke, String biltype) {
+    public Motorvogn(String personnummer, String navn, String adresse, String kjennetegn, String bilmerke, String biltype) {
         this.personnummer = personnummer;
         this.navn = navn;
         this.adresse = adresse;
@@ -20,11 +20,11 @@ public class Motorvogn {
     }
 
     // Getter og setter for alle attributtene
-    public Integer getPersonnummer() {
+    public String getPersonnummer() {
         return personnummer;
     }
 
-    public void setPersonnummer(Integer personnummer) {
+    public void setPersonnummer(String personnummer) {
         this.personnummer = personnummer;
     }
 
