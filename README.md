@@ -3,6 +3,9 @@ Prosjektet består av et program som bruker Java til å lagre all informasjon om
 Målet med programmet er å lage en enkel og effektig måte å registrere en motorvogn med all informasjonen som tilhører.
 Registeret viser en liste over alle motorvognene, og det er mulig å slette alt i registeret.
 
+# Kilder
+https://www.w3schools.com/css/css_table.asp
+
 # Brukertesting
 # Oppgaver til brukeren
 - Registrering av motorvogn:
