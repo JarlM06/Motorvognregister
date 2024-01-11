@@ -1,9 +1,18 @@
+body {
+    background-color: #191f33;
+    color: white;
+}
+
 #mainDiv {
     margin: auto;
     margin-top: 30px;
     width: 70%;
-    background-color: #e5e5e5;
+    background-color: rgba(63, 81, 110, 0.9);
     padding: 10px;
+    border-color: white;
+    border-width: 1px;
+    border-style: solid;
+    border-radius: 4px;
 }
 
 #tittelDiv {
@@ -28,6 +37,8 @@
 
 .knapp {
     margin-bottom: 10px;
+    color: white;
+    background-color: #3d3f46;
 }
 
 #utDiv {
@@ -35,4 +46,17 @@
     justify-content: space-evenly;
     flex-direction: column;
     align-items: center;
+}
+
+#utMotorvogner {
+    min-width: 80%;
+}
+
+table, th, td {
+    border: 1px solid;
+}
+
+table {
+    border-collapse: collapse;
+    width: 100%;
 }
