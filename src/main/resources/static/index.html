@@ -35,13 +35,11 @@
                     </div>
                     <div class="form-group">
                         <label for="bilmerke">Bilmerke</label>
-                        <br>
-                        <input type="text" id="bilmerke" class="form-control">
+                        <div id="bilmerke"></div>
                     </div>
                     <div class="form-group">
                         <label for="biltype">Biltype</label>
-                        <br>
-                        <input type="text" id="biltype" class="form-control">
+                        <div id="biltype"></div>
                     </div>
                 </form>
             </div>
@@ -61,29 +59,79 @@
     </div>
 
     <script type="application/javascript">
+        $(function(){ // kjøres når dokumentet er ferdig lastet
+            hentAlleBiler();
+        });
+
+        $('#bilmerke').change(function() {
+            $.get("/hentBiler", function( biler ) {
+                endreType(biler);
+            });
+        });
+        function hentAlleBiler() {
+            $.get("/hentBiler", function( biler ) {
+                formaterBiler(biler);
+            });
+        }
+        function formaterBiler(biler){
+            let utMerke = "<select id='valgtMerke'>";
+            let forrigeBil;
+            for(const bil of biler ){
+                if (bil.merke !== forrigeBil) {
+                    utMerke+="<option value='"+bil.merke+"'>"+bil.merke+"</option>";
+                }
+                forrigeBil = bil.merke;
+            }
+            utMerke+="</select>";
+            $("#bilmerke").html(utMerke);
+            endreType(biler);
+        }
+
+        function endreType(biler) {
+            let merke = $("#valgtMerke").val();
+            let utType = "<select id='valgtType'>";
+            for(const bil of biler){
+                if (bil.merke === merke){
+                    utType+="<option value='"+bil.type+"'>"+bil.type+"</option>";
+                }
+            }
+            utType+="</select>";
+            $("#biltype").html(utType);
+        }
+
         // Lager et objekt, "motorvogn", med alle attributtene gitt
         $("#registrer").click(function() {
-            const motorvogn = {
-                personnummer: $("#personnummer").val(),
-                navn: $("#navn").val(),
-                adresse: $("#adresse").val(),
-                kjennetegn: $("#kjennetegn").val(),
-                bilmerke: $("#bilmerke").val(),
-                biltype: $("#biltype").val()
-            };
+            if ($("#personnummer").val().length === 11) {
+                const motorvogn = {
+                    personnummer: $("#personnummer").val(),
+                    navn: $("#navn").val(),
+                    adresse: $("#adresse").val(),
+                    kjennetegn: $("#kjennetegn").val(),
+                    bilmerke : $("#valgtMerke").val(),
+                    biltype : $("#valgtType").val()
+                };
 
-            // Sender en postmapping for å lagre "motorvogn" objektet
-            $.post("/lagre", motorvogn, function() {
-                hentAlle();
-            });
+                // Sender en postmapping for å lagre "motorvogn" objektet
+                $.post("/lagre", motorvogn, function() {
+                    hentAlle();
+                });
 
-            // Setter alle inputfeltene tomt
-            $("#personnummer").val("");
-            $("#navn").val("");
-            $("#adresse").val("");
-            $("#kjennetegn").val("");
-            $("#bilmerke").val("");
-            $("#biltype").val("");
+                // Setter alle inputfeltene tomt
+                $("#personnummer").val("");
+                $("#navn").val("");
+                $("#adresse").val("");
+                $("#kjennetegn").val("");
+                $("#bilmerke").val("");
+                $("#biltype").val("");
+            } else {
+                // Setter alle inputfeltene tomt
+                $("#personnummer").val("");
+                $("#navn").val("");
+                $("#adresse").val("");
+                $("#kjennetegn").val("");
+                $("#bilmerke").val("");
+                $("#biltype").val("");
+            }
         })
 
         // Sender en getmapping som henter alle motorvognene i registeret

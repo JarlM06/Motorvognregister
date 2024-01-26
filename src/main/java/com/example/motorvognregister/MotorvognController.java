@@ -30,4 +30,19 @@ public class MotorvognController {
     public void slettMotorvogner() {
         alleMotorvogner.clear();
     }
+
+    @GetMapping("hentBiler")
+    public List<Bil> hentBiler() {
+        List<Bil> listBiler = new ArrayList<>();
+        listBiler.add(new Bil("Audi", "A4"));
+        listBiler.add(new Bil("Audi", "B6"));
+        listBiler.add(new Bil("Audi", "C8"));
+        listBiler.add(new Bil("Toyota", "A3"));
+        listBiler.add(new Bil("Toyota", "B5"));
+        listBiler.add(new Bil("Toyota", "C7"));
+        listBiler.add(new Bil("Honda", "A1"));
+        listBiler.add(new Bil("Honda", "B3"));
+        listBiler.add(new Bil("Honda", "C5"));
+        return listBiler;
+    }
 }
