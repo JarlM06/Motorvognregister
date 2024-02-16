@@ -153,18 +153,17 @@
                 "<th>Slett motorvogn</th>" +
                 "</tr>";
 
-            let row = 1;
+            console.log(motorvogner);
             for (const motorvogn of motorvogner) {
-                ut += `<tr id="row${row}">
+                ut += `<tr id="${motorvogn.id}">
                        <td>${motorvogn.personnummer}</td>
                        <td>${motorvogn.navn}</td>
                        <td>${motorvogn.adresse}</td>
                        <td>${motorvogn.kjennetegn}</td>
                        <td>${motorvogn.bilmerke}</td>
                        <td>${motorvogn.biltype}</td>
-                       <td><button onclick="slettMotorvogn('row${row}')" class="btn btn-danger">Slett</button></td>
+                       <td><button onclick="slettMotorvogn('${motorvogn.id}')" class="btn btn-danger">Slett</button></td>
                        </tr>`;
-                row += 1;
             }
 
             ut += "</table>";
@@ -174,7 +173,7 @@
         // Sender en postmapping for å slette alt i registeret
         $("#slett").click(function() {
             if (confirm("NB! Vil du slette alle motorvognene?") === true) {
-                $.post("/slett", function() {
+                $.post("/slettAlle", function() {
                     hentAlle();
                 });
             }
@@ -182,8 +181,11 @@
 
         function slettMotorvogn(rowId) {
             if (confirm("NB! Er du sikker på at du vil slette denne raden?") === true) {
-                let row = document.getElementById(rowId);
-                row.parentNode.removeChild(row);
+                let rad = document.getElementById(rowId);
+                console.log(rad);
+                $.post("/slett", rad, function() {
+                    hentAlle();
+                })
             }
         }
     </script>

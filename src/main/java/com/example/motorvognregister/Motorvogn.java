@@ -19,6 +19,9 @@ public class Motorvogn {
         this.biltype = biltype;
     }
 
+    // Tom konstruktør
+    public Motorvogn() {}
+
     // Getter og setter for alle attributtene
     public String getPersonnummer() {
         return personnummer;

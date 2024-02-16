@@ -1,5 +1,6 @@
 package com.example.motorvognregister;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -10,27 +11,37 @@ import java.util.List;
 @RestController
 public class MotorvognController {
 
-    // Opprette en liste som inneholder alle motorvognene
-    private final List<Motorvogn> alleMotorvogner = new ArrayList<>();
+    // Henter MotorvognRepository.java og angir det variablen "rep"
+    @Autowired
+    MotorvognRepository rep;
 
-    // PostMapping som lagrer motorvognen i listen med alle motorvognene
+    // En postmapping som sender en "lagreMotorvogn" funksjon til MotorvognRepository
+    // for å lagre en motorvogn i H2-databasen
     @PostMapping("/lagre")
-    public void lagreMotorvogn(Motorvogn innMotorvogn) {
-        alleMotorvogner.add(innMotorvogn);
+    public void lagreMotorvogn(Motorvogn innMotorvogn){
+        rep.lagreMotorvogn(innMotorvogn);
     }
 
-    // GetMapping som henter listen med alle motorvognene
+    // En getmapping som blir brukt for å hente en liste med motorvognene
+    // fra H2-databasen gjennom MotorvognRepository
     @GetMapping("/hentAlle")
-    public List<Motorvogn> hentAlle() {
-        return alleMotorvogner;
+    public List<Motorvogn> hentAlle(){
+        return rep.hentAlleMotorvogner();
     }
 
-    // PostMapping som sletter alt innholdet i listen med motorvognene
+    // En getmapping som sender en "slettAlle" funksjon til MotorvognRepository
+    // for å slette alt innholdet i H2-databasen
+    @PostMapping("/slettAlle")
+    public void slettAlle(){
+        rep.slettMotorvogner();
+    }
+
     @PostMapping("/slett")
-    public void slettMotorvogner() {
-        alleMotorvogner.clear();
+    public void slett(String rad) {
+        rep.slettRad(rad);
     }
 
+    // En getmapping som blir brukt for å lage/hente alle bilene som brukeren kan velge mellom
     @GetMapping("hentBiler")
     public List<Bil> hentBiler() {
         List<Bil> listBiler = new ArrayList<>();
