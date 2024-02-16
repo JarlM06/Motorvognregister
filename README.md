@@ -76,6 +76,13 @@ Registeret viser en liste over alle motorvognene, og det er mulig å slette alt 
 - Generelt god opplevelse, men en 'Angre'-knapp ved sletting ville være nyttig.
 
 
+# Implementeringsseksjon
+- La til en egen slett knapp for hver individuelle motorvogn
+- La til en alert når man prøver å slette noe
+- Endret styling til å være mer intuitivt
+- Flyttet til en H2 database
+
+
 # Kilder
 https://www.w3schools.com/css/css_table.asp
 
