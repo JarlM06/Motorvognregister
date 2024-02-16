@@ -77,10 +77,10 @@ Registeret viser en liste over alle motorvognene, og det er mulig å slette alt 
 
 
 # Implementeringsseksjon
-- La til en egen slett knapp for hver individuelle motorvogn
-- La til en alert når man prøver å slette noe
-- Endret styling til å være mer intuitivt
-- Flyttet til en H2 database
+- La til en egen slett knapp for hver individuelle motorvogn.
+- La til en alert når man prøver å slette noe (er mulig dette ikke funker etter å ha byttet til H2 database, fikk ikke sjekket siden koden min er koblet opp til en tomcat server som jeg bare kan koble meg til på skolen).
+- Endret styling til å være mer intuitivt.
+- Flyttet til en H2 database.
 
 
 # Kilder
