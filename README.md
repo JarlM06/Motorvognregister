@@ -78,4 +78,5 @@ Registeret viser en liste over alle motorvognene, og det er mulig å slette alt 
 
 # Kilder
 https://www.w3schools.com/css/css_table.asp
+
 https://www.w3schools.com/sql/default.asp
